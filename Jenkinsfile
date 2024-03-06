@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "myapp"
         IMAGE_REPO_NAME = "myapp"
-        CONTAINER_NAME = "test"
+        CONTAINER_NAME = "myapp"
         HARBOR_PROTOCOL="https"
         HARBOR_IP="34.47.66.174"
 
