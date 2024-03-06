@@ -13,8 +13,8 @@ pipeline {
                     echo 'Build Docker Image Start'
 
                     // 기존에 실행 중인 컨테이너가 있다면 정지 후 삭제
-                    sh "docker ps -q --filter name=${IMAGE_NAME} | xargs -r docker stop"
-                    sh "docker ps -a -q --filter name=${IMAGE_NAME} | xargs -r docker rm"
+                    sh "docker ps -q --filter name=${CONTAINER_NAME} | xargs -r docker stop"
+                    sh "docker ps -a -q --filter name=${CONTAINER_NAME} | xargs -r docker rm"
 
                     // 기존에 사용하고 있던 이미지 삭제
                     sh "docker images --filter reference=${CONTAINER_NAME} --format '{{.ID}}' | xargs -r docker rmi -f"
