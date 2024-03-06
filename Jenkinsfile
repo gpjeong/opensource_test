@@ -3,7 +3,11 @@ pipeline {
 
     environment {
         IMAGE_NAME = "myapp"
+        IMAGE_REPO_NAME = "myapp"
         CONTAINER_NAME = "test"
+        HARBOR_PROTOCOL="https"
+        HARBOR_IP="34.47.66.174"
+
     }
 
     stages {
@@ -17,11 +21,11 @@ pipeline {
                     sh "docker ps -a -q --filter name=${CONTAINER_NAME} | xargs -r docker rm"
 
                     // 기존에 사용하고 있던 이미지 삭제
-                    sh "docker images --filter reference=${CONTAINER_NAME} --format '{{.ID}}' | xargs -r docker rmi -f"
+                    sh "docker images --filter reference=\"${HARBOR_IP}/${IMAGE_REPO_NAME}/${IMAGE_NAME}\" --format '{{.ID}}' | xargs -r docker rmi -f"
 
                     // 코드를 빌드하고 Docker 이미지를 생성
                     def shortCommit = "${GIT_COMMIT}".substring(0, 7)
-                    def imageNameWithTag = "${IMAGE_NAME}:${shortCommit}"
+                    def imageNameWithTag = "${HARBOR_IP}/${IMAGE_REPO_NAME}/${IMAGE_NAME}:${shortCommit}"
                     app =  docker.build(imageNameWithTag)
 
                     // 도커 이미지 중 <none> 태그 제거
@@ -43,7 +47,7 @@ pipeline {
                     echo 'Deploy to Server Start'
                     // 새로운 Cotainer 실행
                     def shortCommit = "${GIT_COMMIT}".substring(0, 7)
-                    def imageNameWithTag = "${IMAGE_NAME}:${shortCommit}"
+                    def imageNameWithTag = "${HARBOR_IP}/${IMAGE_REPO_NAME}/${IMAGE_NAME}:${shortCommit}"
                     sh "docker run -it -d -p 8000:8000 --name ${CONTAINER_NAME} ${imageNameWithTag}"
                     echo 'Deploy to Server End'
                 }
