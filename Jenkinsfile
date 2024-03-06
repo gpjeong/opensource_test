@@ -17,7 +17,7 @@ pipeline {
                     sh "docker ps -a -q --filter name=${IMAGE_NAME} | xargs -r docker rm"
 
                     // 기존에 사용하고 있던 이미지 삭제
-                    sh "docker images --filter reference=${IMAGE_NAME} --format '{{.ID}}' | xargs -r docker rmi -f"
+                    sh "docker images --filter reference=${CONTAINER_NAME} --format '{{.ID}}' | xargs -r docker rmi -f"
 
                     // 코드를 빌드하고 Docker 이미지를 생성
                     def shortCommit = "${GIT_COMMIT}".substring(0, 7)
