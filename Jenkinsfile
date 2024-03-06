@@ -49,5 +49,19 @@ pipeline {
                 }
             }
         }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    echo 'Push Docker Image Start'
+                    def shortCommit = "${GIT_COMMIT}".substring(0, 7)
+                    registry = "${HARBOR_PROTOCOL}://${HARBOR_IP}"
+                    docker.withRegistry(registry, 'harborid') {
+                        app.push("${shortCommit}")
+                    echo 'Push Docker Image End'
+                    }
+                }
+            }
+        }
     }
 }
