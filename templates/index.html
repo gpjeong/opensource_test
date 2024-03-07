@@ -1,686 +1,697 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>static</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Burk Rose</title><style>
+	/* cspell:disable-file */
+	/* webkit printing magic: print all background colors */
+	html {
+		-webkit-print-color-adjust: exact;
 	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 3px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
+	* {
+		box-sizing: border-box;
+		-webkit-print-color-adjust: exact;
 	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.column-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.column {
-	padding: 0 1em;
-}
-
-.column:first-child {
-	padding-left: 0;
-}
-
-.column:last-child {
-	padding-right: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-    margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-block;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1.25em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(55, 53, 47, 1);
-}
-.highlight-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.highlight-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.highlight-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.highlight-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.highlight-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.highlight-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.highlight-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.highlight-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.highlight-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.highlight-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.highlight-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.highlight-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.highlight-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.highlight-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.highlight-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.block-color-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.block-color-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.block-color-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.block-color-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.block-color-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.block-color-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.block-color-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.block-color-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.block-color-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.block-color-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.block-color-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.block-color-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
-.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
-.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
-.select-value-color-pageGlass { background-color: undefined; }
-.select-value-color-washGlass { background-color: undefined; }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
 	
-</style></head><body><article id="252d5554-0ffc-4c2c-b33c-6f175fea467a" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">👨🏻‍💻</span></div><h1 class="page-title">static</h1><p class="page-description"></p></header><div class="page-body"><div id="b28ae6a3-f2b2-461b-b21e-509543a1ecb3" class="column-list"><div id="12f30c1f-c8bc-46b3-a2d7-7f0553595746" style="width:37.5%" class="column"><figure id="3f8a027c-162e-4328-acdc-90d938485453" class="image"><a href="static%20252d55540ffc4c2cb33c6f175fea467a/%E1%84%82%E1%85%A9%E1%84%89%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8C%E1%85%B5%E1%86%AB.jpeg"><img style="width:3024px" src="static%20252d55540ffc4c2cb33c6f175fea467a/%E1%84%82%E1%85%A9%E1%84%89%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8C%E1%85%B5%E1%86%AB.jpeg"/></a></figure><p id="029de28d-1c48-4f18-b8f7-1d3a6660ea1c" class="">
-</p></div><div id="c31ab3a7-7de0-49ee-82c2-f89cd643a043" style="width:62.5%" class="column"><p id="a839bcb1-7e6e-45fd-bd8f-9a12ae36b6b2" class="">📧 <strong>Email</strong></p><p id="3d80326e-2bec-41b0-9df7-65536aed9251" class="">rayjang111@gmail.com</p><p id="8ec21660-2b72-4440-bc21-40aa1a9b97e2" class="">🐱<strong>Github</strong></p><p id="adc60928-99b1-469e-b446-eebb0d254de2" class=""><a href="https://github.com/rayjang111">https://github.com/rayjang111</a></p><p id="3d147a10-d58b-4189-9623-3c941fb8130b" class="">📚 <strong>TIL (매일매일 공부하는것들을 기록)</strong></p><p id="5e45f6e9-e77b-467e-9ea1-6c54877f81bd" class=""><a href="https://www.notion.so/674da1710edf4cb8bfee71abd451efbf?pvs=21">https://rayjang111.notion.site/TIL-674da1710edf4cb8bfee71abd451efbf</a></p><p id="8bc9197f-f7a7-4d39-92b7-6162913857f1" class="">📚<strong>tmi-bigdata-study (빅데이터 스터디)</strong></p><p id="e6da392c-5924-4723-b2b8-c8bf59af3aee" class=""><a href="https://www.notion.so/TMI-study-74a9d669fee041269c0a70c9c127cef5?pvs=21">https://rayjang111.notion.site/TMI-study-74a9d669fee041269c0a70c9c127cef5</a></p><p id="3609edb3-646c-4c1d-8bd9-e8047df497d8" class="">📚<strong>Spark, Hadoop, Kafka Study </strong></p><p id="204bb38b-387c-483f-b20f-295a1adce994" class=""><a href="https://www.notion.so/91844aa4a22046a6ac287a0a4bebef28?pvs=21">하둡 완벽 가이드</a> </p><p id="234eef65-e03e-43d1-9237-119503d16587" class=""><a href="https://www.notion.so/644dbd5596614fe992143d937517cc0a?pvs=21">스파크 완벽 가이드</a> </p><p id="b0c662d5-5c31-44bb-b069-039a1970ae7b" class=""><a href="https://www.notion.so/4fe27e8fdd0a4da78d20b2dfe7fb5de3?pvs=21">카프카 핵심 가이드</a> </p><p id="89735584-3931-4fcc-88fd-db1b10655a01" class="">📚<strong>빅데이터 프레임워크 클러스터 구축 실습</strong></p><figure id="164373e3-66bc-4e40-9fb7-9c687ef5007d" class="link-to-page"><a href="https://www.notion.so/164373e366bc4e409fb79c687ef5007d?pvs=21">빅데이터 프레임워크 클러스터 구축 실습</a></figure></div></div><h1 id="4e3708cf-98ad-45cf-be58-3ea7a0a1de06" class=""><mark class="highlight-orange">Intro</mark></h1><p id="a59f3a1f-3a1f-4bf9-9aa6-fe4df45a1c83" class="">안녕하세요. 데이터의 가치를 발굴하는 빅데이터 엔지니어 장현석입니다. 저는 스타트업에 초기엔 데이터사이언티스트로 취업하였지만 실무를 접하면서 데이터의 분석 뿐만 아니라 데이터의 수집 및 관리도 중요함을 알게되었습니다 . 그 후 회사 제품의 ETL 프로세스를 개선하는 과정에서 빅데이터 프레임워크들을 접하게 되었고 그 원리에 재미를 느껴 데이터 엔지니어링에 전념하게되었습니다.</p><p id="a20dd527-d7db-4d4c-a700-c71232bde3ef" class="">저는 뛰어난 데이터 엔지니어가 되기 위한 역량을 세 가지 갖추고 있습니다.</p><p id="0af832bb-9eb5-47f0-a43f-55cee9408353" class="">첫번째로는 빅데이터 프레임워크 활용경험입니다. 전 스파크, 하둡, 엘라스틱서치 등을 꾸준히 실무에서 활용해왔습니다. 뿐만 아니라 따로 데이터 엔지니어링 스터디인 Tmi-study 도 진행하고 하둡, 스파크,카프카 등의 빅데이터 프레임워크 구축 실습과 함께 기본서들에 대한 실습 및 정리도 꾸준히 하고 있습니다.</p><p id="84421f23-f366-46e6-8e54-9c2d6c3d1500" class="">두번째는 클라우드 활용경험입니다. 저는 데이터 엔지니어링에서 빼놓을 수 없는것 중 하나는 클라우드와 OS 에 대한 지식이라고 생각합니다. 저는 클라우드 플랫폼 기업에 다니며 클라우드 도메인 지식을 쌓을 수 있었고 정보처리기사, 리눅스마스터 등을 공부하며 컴퓨터시스템과 OS 에 대한 지식을 쌓아 왔습니다.</p><p id="a194c49f-833b-4054-8b89-f80ef3600469" class="">세번째는 데이터 분석능력입니다 . 데이터 엔지니어도 분석능력이 필요하다고 생각합니다. 그래야 수집하는 데이터에 대한 검증도 할 수 있고 데이터 사이언티스트들과의 커뮤니케이션도 원활히 할 수 있습니다. 저는 통계학을 무기로 다수의 머신러닝/딥러닝 프로젝트 경험을 갖추고 있습니다. 이를 통해 회사 ETL 프로세스에서도 개발자들과 머신러닝 엔지니어들의 중간다리 역할을 해왔습니다. 이와 같은 경험을 바탕으로 다양한 사람과 협업하며 실제 비즈니스 가치를 이끌 수 있는 데이터 엔지니어링을 해나가겠습니다. </p><p id="032201ee-13d7-4d16-889f-5cca9b4b2095" class="">
-</p><h1 id="64599475-3687-4f61-8c86-3dc9b44b25e6" class=""><mark class="highlight-orange">Brief Description</mark></h1><ul id="536b0eca-636c-45eb-8ef7-dd987fc15079" class="bulleted-list"><li style="list-style-type:disc">Spark, Hadoop, ElasticSearch, Kafka 등 빅데이터 프레임워크를 활용하여 인공지능 모듈들을 개발하고 ETL 작업을 수행하였습니다.  특히 Spark 성능 최적화를 위해 다양한 시도를 해왔습니다<ul id="a3020008-0b88-4a1d-9392-17da9c0c3121" class="bulleted-list"><li style="list-style-type:circle">ex) , Pandas UDF 를 활용한 분산 워크로드 예측 등</li></ul></li></ul><ul id="481a236f-b621-45f3-b3ab-e02f1ba17279" class="bulleted-list"><li style="list-style-type:disc">클라우드 지능형 운영 솔루션인 AIOps 제품을 개발하며 클라우드 컴퓨팅 도메인 지식을 쌓았습니다</li></ul><ul id="007b9626-4905-459f-aa7d-822d04aa21af" class="bulleted-list"><li style="list-style-type:disc">빅데이터 엔지니어링 스터디를 꾸준히 진행하며 관련 자료를 정리하고 있습니다</li></ul><ul id="62ecb7c3-f054-49ab-aa41-a62f0e143526" class="bulleted-list"><li style="list-style-type:disc">통계학을 전공하고 다수의 머신러닝 및 딥러닝 프로젝트 경험을 쌓았습니다</li></ul><ul id="33e84b48-b39c-457f-8096-ff77c34a2a8a" class="bulleted-list"><li style="list-style-type:disc">클라우드 컴퓨팅 관련 IITP 과제들에 대한 제안과 수행을 하며 비즈니스 인사이트를 키웠습니다</li></ul><p id="78fb1939-8277-4db9-bc6b-1b6b5447bb86" class="">For more stories:</p><figure id="0b584a03-bf57-45be-8a49-409c0ca041fa" class="link-to-page"><a href="https://www.notion.so/Description-0b584a03bf5745be8a49409c0ca041fa?pvs=21">Description 상세</a></figure><h1 id="803dd2a3-6205-4f7f-9c6d-848dc2082a42" class=""><mark class="highlight-orange">Work Experience</mark></h1><h2 id="e0c53850-8d51-4371-9f47-e03ca5aba345" class=""><a href="http://www.okestro.com/">오케스트로</a> </h2><p id="656c7d0d-b782-48d6-ad8d-67f6b8eb1861" class=""><mark class="highlight-gray">2020.4 ~ 현재 (2년)</mark></p><p id="0f56a5f0-ac0f-4aae-bbda-c4b2954d41d4" class="">대한민국 정부 표준 클라우드 아키텍처를 선도하는 멀티 클라우드 플랫폼 기업</p><div id="114e5217-e569-4bfd-b73c-01a72caed4cb" class="column-list"><div id="6b47025e-19ad-4b31-a606-bf66bfed7772" style="width:25%" class="column"><p id="72f66765-4017-4f57-b5ea-4fc90dc0be32" class=""><strong>Symphony v1 </strong></p><p id="dd91184d-bcc8-4359-8df4-93aa9c58b118" class=""><mark class="highlight-gray">2020.4~ 2021.1</mark></p><p id="50f21f68-b636-46b9-a8d1-c95133a79808" class="">
-</p><p id="98ac4cae-9563-4d1b-9968-470a3937a807" class="">
-</p><p id="4cc457ff-c7be-4fdd-b260-2424f00e079d" class="">
-</p></div><div id="effee6ab-f0c0-4300-8406-08e1b40d3dc0" style="width:75%" class="column"><ul id="74d16184-0099-4f8a-b05b-c07859f3f896" class="bulleted-list"><li style="list-style-type:disc">인공지능을 활용하여, ICT 클라우드 운영을 지능화, 최적화하는 AIOps 솔루션인 SYMPHONY A.I.를 개발</li></ul><ul id="c6e553e9-07bb-4c76-a65a-6071238419e8" class="bulleted-list"><li style="list-style-type:disc">워크로드 예측, 이상징후 탐지, 가상자원 최적배치등의 인공지능 모듈 개발</li></ul><ul id="84968688-1e56-4d9d-b9ae-9ce4e66d3eae" class="bulleted-list"><li style="list-style-type:disc">예측기능, 이상징후 기능, 최적배치 기능 화면 설계</li></ul><ul id="fbf6d23b-fc60-4f25-a058-52217652fcce" class="bulleted-list"><li style="list-style-type:disc">Front-end 에 데이터를 서비스하기 위한 Api 서버 개발</li></ul><ul id="b3b4a6b8-9428-4f3c-bae8-3e3288501dbd" class="bulleted-list"><li style="list-style-type:disc">로그 수집 기능 구현을 위한 ELK 스택 구성 </li></ul><ul id="b2cc11e9-7d00-4ccf-b7c9-d24e5a6f6fd4" class="bulleted-list"><li style="list-style-type:disc">클라우드 계층 구조를 활용한 데이터 수집부터 인공지능 모듈을 활용한 데이터 생성과 화면에 보여지는 데이터 api 검증및 테스팅 및 설치까지 제품의 모든 데이터 흐름에 참여</li></ul><ul id="5a2a503d-960b-4fc2-8d99-c047c6c17eec" class="bulleted-list"><li style="list-style-type:disc">대한민국 공공기관의 차세대 클라우드 전환 1호 사업인 차세대지방세시스템 1차 분석/설계 사업(총 예산 1,400억원)에 삼성SDS와 컨소시엄으로 참여하여, A.I. 기반 클라우드 플랫폼 분야를 담당</li></ul></div></div><hr id="953f276a-134f-4e6d-b05c-0ac315cbd7f6"/><div id="49be44bf-942b-46cf-9628-aeda6b91e5f9" class="column-list"><div id="bd289b20-0c4f-4bfa-96c2-ce6556c21889" style="width:25%" class="column"><p id="157710df-4dd7-4ca0-a61f-86f607e52c08" class=""><strong>Symphony v2</strong></p><p id="b2e6c277-3d16-4e31-9787-f47b5d999876" class=""><mark class="highlight-gray">2021.1~ 2022.3</mark></p><p id="91daaff5-04d4-487e-92b3-a76bde4bcd25" class="">
-</p><p id="8c94d850-9f1c-4b1e-a635-17fc8a63a2a0" class="">
-</p><p id="4d4e3775-ecde-4d82-8e63-5c1e8d6dea41" class="">
-</p></div><div id="a0aabab7-cf43-4bbe-ab69-c40797bea62b" style="width:75%" class="column"><ul id="82bfdcbc-bf86-425a-9365-41c2cb9f24f9" class="bulleted-list"><li style="list-style-type:disc">v1의 인공지능 모듈 학습시간 개선, ETL 안정화를 위해 Spark, Hadoop , Elasticsearch, Kafka 등의 빅데이터 프레임워크 도입 및 ETL 프로세스 생성</li></ul><ul id="651fc243-d34f-4730-89b9-b61d29c83b70" class="bulleted-list"><li style="list-style-type:disc">예측, 이상징후 탐지 등의 인공지능 모듈들의 Spark Migration 수행 </li></ul><ul id="1e78b8aa-dae4-4be8-89ba-e8eab14646b6" class="bulleted-list"><li style="list-style-type:disc">Pandas UDF 를 통한 워크로드 예측기능 고도화</li></ul><ul id="524c42b8-704d-43f5-bdab-aab7905efff5" class="bulleted-list"><li style="list-style-type:disc">대한민국 표준 클라우드 플랫폼인 전자정부 클라우드 플랫폼 구축사업(3차)을 주관사업자로 수행하며 핵심 제품으로서 납품</li></ul><ul id="20e0242f-2b85-4a82-aac8-d32c1be3c211" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.ktl.re.kr/"><strong>한국산업기술시험원</strong></a><strong> </strong>에서 소프트웨어 성능 인증을 진행 ( 예측,  이상징후, 최적배치 등)</li></ul><ul id="0962973b-395a-49bc-ab3d-a11577ed67d4" class="bulleted-list"><li style="list-style-type:disc">국가정보자원관리원, 한국지역정보개발원 등에 OKESTRO CMP와 함께 공급</li></ul></div></div><hr id="b0c1cf5a-de0b-46d0-8fa3-668b2598a629"/><div id="3c8c7124-7bb9-4e57-89e8-37eb71480027" class="column-list"><div id="84c0910a-ce3e-4e6c-abd5-8de994f0d0dd" style="width:25%" class="column"><p id="b9b2dc8b-dcbd-4ebe-aa80-2aebd7a3d16f" class=""><strong>IITP 과제 제안 및 수행</strong></p><p id="639b5b25-9334-4c00-bcaf-a01f209a39e1" class=""><mark class="highlight-gray">2021.1~ 2022.3</mark></p></div><div id="6f4d2d8b-0ccc-43d5-9b33-13f74dc2d87c" style="width:75%" class="column"><ul id="d189b505-7972-45af-bc13-514fb46df374" class="bulleted-list"><li style="list-style-type:disc">가상머신과 컨테이너를 연동한 마이크로 서비스 운영을 제시한 과제 작성 및 수행 (총 사업비 34.3억, 3년사업, 2차년도)</li></ul><ul id="7710b1e2-01b8-442d-8109-200291eb16ca" class="bulleted-list"><li style="list-style-type:disc">클라우드 플랫폼내 마켓플레이스 구축을 통한 SaaS 활성화 프로젝트 과제 작성 및 수행 (총 사업비 32.3억, 3년사업, 1차년도)</li></ul><ul id="fa26ad40-8ee8-4efc-96bf-ada476a41b6e" class="bulleted-list"><li style="list-style-type:disc">다양한 제안사업을 진행하며 클라우드 산업군, 회사 제품에 대한 이해와 비즈니스 인사이트가 생김</li></ul></div></div><hr id="26d695dd-7e8f-4930-9781-ae1a563bebb0"/><div id="4138db66-6efd-4a6f-ac43-9b20af1a53b7" class="column-list"><div id="8a571777-fff0-47ee-b9ee-38b541b85ac5" style="width:25%" class="column"><p id="aea5f75e-afe8-4758-b3a9-5507d8414502" class=""><strong>기타</strong></p></div><div id="2a445baf-c3df-45f8-9845-31b287df1c29" style="width:75%" class="column"><ul id="6566022e-fe65-44e6-9486-94b5d6d66160" class="bulleted-list"><li style="list-style-type:disc">입사당시엔 20명이었던 인원이 현재 90명까지 상승 </li></ul><ul id="2392f8ef-1554-460e-b45a-71bd77261494" class="bulleted-list"><li style="list-style-type:disc">매출또한  17억 (2019년)에서 136억 (2021년) 까지 상승</li></ul><ul id="7965d297-f155-4065-a1c1-e8a3b40ea438" class="bulleted-list"><li style="list-style-type:disc">폭발적으로 성장하는 스타트업에 합류해 새로운것들을 시도해가며 성장해왔고 새롭게 입사하시는분들에 대한 리딩도 진행함</li></ul></div></div><h1 id="83f98657-6c84-4a65-b6f5-66c23988443a" class=""><mark class="highlight-orange">Skills</mark></h1><ul id="05cc593e-c801-468e-9185-03d6437e33be" class="bulleted-list"><li style="list-style-type:disc">Python</li></ul><ul id="af690eec-32eb-4a86-bee3-9bd8b7031808" class="bulleted-list"><li style="list-style-type:disc">Spark</li></ul><ul id="77983b94-e73c-4f8d-b841-057c19262fb2" class="bulleted-list"><li style="list-style-type:disc">ElasticSearch</li></ul><ul id="aa4af424-b10c-467c-a9cf-8399ba503cf4" class="bulleted-list"><li style="list-style-type:disc">Hadoop</li></ul><ul id="a83ec40a-d409-43d3-aedc-a9b24ffcbd61" class="bulleted-list"><li style="list-style-type:disc">Kafka</li></ul><ul id="3724c646-5386-455e-a011-418e3a14ec95" class="bulleted-list"><li style="list-style-type:disc">Linux</li></ul><ul id="ec91c944-93a6-485c-ad78-8c74d0816b13" class="bulleted-list"><li style="list-style-type:disc">Docker</li></ul><p id="dfeb8a96-6da7-4603-82d3-f0a10b4d4fd2" class="">각 기술 스택에 대한 상세설명:</p><figure id="bbb8503a-f8f0-4baa-bd23-adc3f32c67f0" class="link-to-page"><a href="https://www.notion.so/bbb8503af8f04baabd23adc3f32c67f0?pvs=21">기술스택 상세</a></figure><h1 id="c98c4a33-860d-4da1-98ff-6b1e770f9ebf" class=""><mark class="highlight-orange">Projects</mark></h1><div id="cdb36712-af43-46b5-8bde-ddb777502281" class="collection-content"><h4 class="collection-title">Main Projects</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Priority</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesRelation"><path d="M13.1475 10.5869V3.72363C13.1475 3.25195 12.833 2.93066 12.3477 2.93066H5.48438C5.02637 2.93066 4.70508 3.27246 4.70508 3.67578C4.70508 4.07227 5.05371 4.40039 5.46387 4.40039H7.89746L10.8438 4.30469L9.59961 5.39844L3.08496 11.9199C2.92773 12.0771 2.8457 12.2686 2.8457 12.46C2.8457 12.8564 3.20801 13.2256 3.61816 13.2256C3.80957 13.2256 3.99414 13.1504 4.15137 12.9932L10.6729 6.47168L11.7803 5.22754L11.6641 8.05762V10.6074C11.6641 11.0176 11.9922 11.373 12.4023 11.373C12.8057 11.373 13.1475 11.0312 13.1475 10.5869Z"></path></svg></span>관련 활동</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>담당 Skills &amp; 사용 Libraries</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>진행 기간</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>한 줄 소개</th></tr></thead><tbody><tr id="f7b6f74d-7937-406d-9083-7ff3d1c0a624"><td class="cell-title"><a href="https://www.notion.so/Machine-Learning-f7b6f74d7937406d90837ff3d1c0a624?pvs=21">Machine Learning 경진대회 대표작</a></td><td class="cell-Cu~&lt;">4</td><td class="cell-eDJa"></td><td class="cell-jlRT"><span class="selected-value select-value-color-pink">MachineLearning Libraries</span><span class="selected-value select-value-color-default">Python</span><span class="selected-value select-value-color-orange">Visualization Libraries</span></td><td class="cell-:x_E"><time>@2021/06/10 → 2021/07/30</time></td><td class="cell-XiJH">Machine Learning 경진대회 대표작입니다</td></tr><tr id="d17d08e5-0ba7-4705-97f9-6fa08d75acc2"><td class="cell-title"><a href="https://www.notion.so/IITP-d17d08e50ba7470597f96fa08d75acc2?pvs=21">IITP 과제 제안&amp; 수행</a></td><td class="cell-Cu~&lt;">5</td><td class="cell-eDJa"></td><td class="cell-jlRT"></td><td class="cell-:x_E"><time>@2021/01/01 → 2022/04/01</time></td><td class="cell-XiJH">IITP, NIPA 관련 과제를 제안하고 수행</td></tr><tr id="4719a9d5-114f-4ab0-9add-2f918f0d8363"><td class="cell-title"><a href="https://www.notion.so/ELK-4719a9d5114f4ab09add2f918f0d8363?pvs=21">ELK 스택을 이용한 로그 수집&amp;분석 모듈 개발</a></td><td class="cell-Cu~&lt;">2</td><td class="cell-eDJa"></td><td class="cell-jlRT"><span class="selected-value select-value-color-yellow">Docker</span><span class="selected-value select-value-color-default">ElasticSearch</span><span class="selected-value select-value-color-pink">Filebeat</span><span class="selected-value select-value-color-gray">Kibana</span><span class="selected-value select-value-color-yellow">Logstash</span><span class="selected-value select-value-color-default">Python</span></td><td class="cell-:x_E"><time>@2020/04/03 → 2020/08/03</time></td><td class="cell-XiJH">엘라스틱서치를 구성하고 로그를 수집해 분석하는 모듈을 작성하였습니다</td></tr><tr id="ad18e3a6-27d8-42a9-9443-18f5444fbb47"><td class="cell-title"><a href="https://www.notion.so/AIOPS-ad18e3a627d842a9944318f5444fbb47?pvs=21"><img class="icon" src="static%20252d55540ffc4c2cb33c6f175fea467a/Main%20Projects%20cdb36712af4346b58bdeddb777502281/AIOPS%20%E1%84%8C%E1%85%A6%E1%84%91%E1%85%AE%E1%86%B7%20%E1%84%80%E1%85%A2%E1%84%87%E1%85%A1%E1%86%AF%20ad18e3a627d842a9944318f5444fbb47/aiops_image.png"/>AIOPS 제품 개발 </a></td><td class="cell-Cu~&lt;">1</td><td class="cell-eDJa"></td><td class="cell-jlRT"><span class="selected-value select-value-color-default">ElasticSearch</span><span class="selected-value select-value-color-purple">Hadoop</span><span class="selected-value select-value-color-default">Python</span><span class="selected-value select-value-color-red">Spark</span></td><td class="cell-:x_E"><time>@2020/04/03 → 2021/03/31</time></td><td class="cell-XiJH">클라우드 데이터 센터의 지능적 운영을 지원하는 AIOps 제품 연구개발에 주도적으로 참여</td></tr><tr id="c874c424-125b-4973-8c74-bcb21bc58056"><td class="cell-title"><a href="https://www.notion.so/DeepLearning-c874c424125b49738c74bcb21bc58056?pvs=21">DeepLearning 영상처리를 이용한 동영상 내 객체 개수 탐지</a></td><td class="cell-Cu~&lt;">3</td><td class="cell-eDJa"></td><td class="cell-jlRT"><span class="selected-value select-value-color-purple">Keras</span><span class="selected-value select-value-color-orange">OpenCV</span><span class="selected-value select-value-color-default">Python</span><span class="selected-value select-value-color-orange">Sort Algorithm</span><span class="selected-value select-value-color-blue">Tensorflow</span></td><td class="cell-:x_E"><time>@2019/08/01 → 2019/11/30</time></td><td class="cell-XiJH">딥러닝을 이용한 Object Tracking 프로젝트</td></tr></tbody></table><br/><br/></div><h1 id="393469ee-d6a4-4a6a-8de0-a347712cd63e" class=""><mark class="highlight-orange">Studies &amp; Other Experiences</mark></h1><ul id="bd9b7a33-2685-429b-bc15-09708eb3c9ab" class="bulleted-list"><li style="list-style-type:disc">빅데이터 스터디 Tmi 스터디 진행</li></ul><ul id="167fece7-36f7-4f7c-b5e3-aed01260336c" class="bulleted-list"><li style="list-style-type:disc">Spark, Hadoop, Kafka O-Reilly Book 실습 진행 및 스터디</li></ul><ul id="227d9796-0ba9-4cd7-ac1d-ed644d186a5c" class="bulleted-list"><li style="list-style-type:disc">서울산업진흥원 딥러닝을 이용한 영상처리 응용프로젝트 개발과정 수료 (우수 프로젝트상)</li></ul><ul id="3f469fd7-a249-4f14-a494-0e39c8df9e2d" class="bulleted-list"><li style="list-style-type:disc">동국대학교 DataScience 수업 조교 및 TA 진행</li></ul><ul id="459e44f9-5e5a-4e5e-b38d-e89c3dd50c9d" class="bulleted-list"><li style="list-style-type:disc">동국대학교 108리더스 12기</li></ul><ul id="f4c6a94b-bb06-406c-a950-f1fd19daea6d" class="bulleted-list"><li style="list-style-type:disc">교내 메이커톤 우수상 </li></ul><ul id="ec0782ab-e79e-45ea-9656-013acbe129b8" class="bulleted-list"><li style="list-style-type:disc">교내 인공지능 학회 DAIA 3기 소속으로 매주 논문 리뷰 진행 &amp; 선형대수, 이미지 처리 관련 스터디 진행</li></ul><ul id="42cd33e0-d274-4565-ad23-539fc76f8a12" class="bulleted-list"><li style="list-style-type:disc">모두의 연구소 AICOLLEGE 참여 (VIDEO Summarization)</li></ul><h1 id="a8f44564-4262-4dbd-b5ac-ef6aa4c83bbe" class=""><mark class="highlight-orange">Certificates</mark></h1><ul id="6cdeae5a-eb7b-4ba1-9692-c7124dcebace" class="bulleted-list"><li style="list-style-type:disc">빅데이터분석기사</li></ul><ul id="54c256ab-02bd-4545-987d-f18901c28fe1" class="bulleted-list"><li style="list-style-type:disc">정보처리기사</li></ul><ul id="57fd24c6-92d4-48e9-a152-04ee6cbfd1b9" class="bulleted-list"><li style="list-style-type:disc">SQLD </li></ul><ul id="ef3b1de0-7641-4017-95d1-737121d0a28f" class="bulleted-list"><li style="list-style-type:disc">ADSP  </li></ul><ul id="0245d0b9-ad76-4a51-86e5-c4a2e1a8ffbb" class="bulleted-list"><li style="list-style-type:disc">Linux Master 1급 (필기 합격)</li></ul><h1 id="53561f23-7e0e-4756-9628-14ceace4534a" class=""><mark class="highlight-orange">Paper</mark></h1><table id="be9b7a40-fe4b-4f61-b0de-191285bc6113" class="simple-table"><thead class="simple-table-header"><tr id="8a54207e-5832-4db4-973f-b08e2a4fb614"><th id="OeZK" class="simple-table-header-color simple-table-header" style="width:254px">논문명</th><th id="[ImF" class="simple-table-header-color simple-table-header" style="width:254px">학회</th><th id="EWA?" class="simple-table-header-color simple-table-header">상</th></tr></thead><tbody><tr id="0da99b96-7cba-4754-ad19-052fc82e223a"><td id="OeZK" class="" style="width:254px">능동적 가상머신 통합 모형을 위한 평가척도 설계</td><td id="[ImF" class="" style="width:254px">2021 한국소프트웨어종합학술대회</td><td id="EWA?" class="">우수상</td></tr><tr id="c5e98cbc-b2f7-4497-ba02-be9fbf79c9e0"><td id="OeZK" class="" style="width:254px">미 분배 저작권 데이터 매칭 시스템 연구</td><td id="[ImF" class="" style="width:254px">2021 한국서비스경영학회</td><td id="EWA?" class="">우수발표논문상</td></tr></tbody></table><h1 id="64f59cb2-dc1d-453a-8126-9460a0e533cd" class=""><mark class="highlight-orange">Patent</mark></h1><table id="e48d7d9c-fe52-41e6-b8c1-17b2ddbb9940" class="simple-table"><thead class="simple-table-header"><tr id="3d539082-f164-40aa-90d4-23c1296bcfed"><th id="~p\W" class="simple-table-header-color simple-table-header">발명의 명칭</th><th id="hneW" class="simple-table-header-color simple-table-header">출원국</th><th id="WWDt" class="simple-table-header-color simple-table-header">출원일</th><th id="RvgE" class="simple-table-header-color simple-table-header">출원번호</th></tr></thead><tbody><tr id="5d35acff-9c18-4657-9058-c23d300f72c5"><td id="~p\W" class="">물리 서버 성능 저하를 고려하여 가상 머신 예측 관리를 구현한 가상 머신 배치 시스템 및 가상 머신 배치 방법</td><td id="hneW" class="">대한민국</td><td id="WWDt" class="">2021.10.15.</td><td id="RvgE" class="">10-2021-0137359</td></tr><tr id="db9721e4-c1f1-4c17-af9e-b1d830efb0a0"><td id="~p\W" class="">예측 불확실성이 반영된 배치 스케줄을 제공하는 가상 머신 배치 시스템 및 가상 머신 배치 방법</td><td id="hneW" class="">대한민국</td><td id="WWDt" class="">2021.10.21.</td><td id="RvgE" class="">10-2021-0141139</td></tr><tr id="dfe83c16-fed4-4425-ae2c-c4e999b02260"><td id="~p\W" class="">이상 징후 모니터링 기능이 탑재된 가상 머신 배치 시스템 및 가상 머신 배치 방법</td><td id="hneW" class="">대한민국</td><td id="WWDt" class="">2021.10.29.</td><td id="RvgE" class="">10-2021-0146698</td></tr><tr id="ec371d08-74d6-4d13-80d1-3c15ad05160f"><td id="~p\W" class="">Virtual Machine Placement System and Virtual Machine Placement Method for Implementing Prediction Management of Virtual Machines Considering Performance Degration of Physical Server</td><td id="hneW" class="">미국</td><td id="WWDt" class="">2021.12.23.</td><td id="RvgE" class="">17/645,833</td></tr></tbody></table><h1 id="e6d1677d-3e22-46a0-9016-55dbe600093c" class=""><mark class="highlight-orange">Education</mark></h1><ul id="865a8c60-49c4-469a-b3e7-6362bc970eba" class="bulleted-list"><li style="list-style-type:disc">양평고등학교 졸업<ul id="172abb4a-6491-484c-815d-3b316cfddf14" class="bulleted-list"><li style="list-style-type:circle">2011.03~2014.02</li></ul></li></ul><ul id="06ada9fb-2367-4988-bea1-0e286128ae67" class="bulleted-list"><li style="list-style-type:disc">동국대학교 통계학과 졸업 <ul id="a96d9645-d911-4f76-88d4-71a6b4e75515" class="bulleted-list"><li style="list-style-type:circle">2014.03. ~ 2020.02  </li></ul></li></ul><p id="3b78c2c4-ffd9-4d9a-8319-729e143ef344" class="">
-</p><p id="58d2ef8e-b49f-42bb-bdfc-2880a1eba000" class="">
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	@media only screen {
+		body {
+			margin: 2em auto;
+			max-width: 900px;
+			color: rgb(55, 53, 47);
+		}
+	}
+	
+	body {
+		line-height: 1.5;
+		white-space: pre-wrap;
+	}
+	
+	a,
+	a.visited {
+		color: inherit;
+		text-decoration: underline;
+	}
+	
+	.pdf-relative-link-path {
+		font-size: 80%;
+		color: #444;
+	}
+	
+	h1,
+	h2,
+	h3 {
+		letter-spacing: -0.01em;
+		line-height: 1.2;
+		font-weight: 600;
+		margin-bottom: 0;
+	}
+	
+	.page-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-top: 0;
+		margin-bottom: 0.75em;
+	}
+	
+	h1 {
+		font-size: 1.875rem;
+		margin-top: 1.875rem;
+	}
+	
+	h2 {
+		font-size: 1.5rem;
+		margin-top: 1.5rem;
+	}
+	
+	h3 {
+		font-size: 1.25rem;
+		margin-top: 1.25rem;
+	}
+	
+	.source {
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		padding: 1.5em;
+		word-break: break-all;
+	}
+	
+	.callout {
+		border-radius: 3px;
+		padding: 1rem;
+	}
+	
+	figure {
+		margin: 1.25em 0;
+		page-break-inside: avoid;
+	}
+	
+	figcaption {
+		opacity: 0.5;
+		font-size: 85%;
+		margin-top: 0.5em;
+	}
+	
+	mark {
+		background-color: transparent;
+	}
+	
+	.indented {
+		padding-left: 1.5em;
+	}
+	
+	hr {
+		background: transparent;
+		display: block;
+		width: 100%;
+		height: 1px;
+		visibility: visible;
+		border: none;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	@media only print {
+		img {
+			max-height: 100vh;
+			object-fit: contain;
+		}
+	}
+	
+	@page {
+		margin: 1in;
+	}
+	
+	.collection-content {
+		font-size: 0.875rem;
+	}
+	
+	.column-list {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.column {
+		padding: 0 1em;
+	}
+	
+	.column:first-child {
+		padding-left: 0;
+	}
+	
+	.column:last-child {
+		padding-right: 0;
+	}
+	
+	.table_of_contents-item {
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.3;
+		padding: 0.125rem;
+	}
+	
+	.table_of_contents-indent-1 {
+		margin-left: 1.5rem;
+	}
+	
+	.table_of_contents-indent-2 {
+		margin-left: 3rem;
+	}
+	
+	.table_of_contents-indent-3 {
+		margin-left: 4.5rem;
+	}
+	
+	.table_of_contents-link {
+		text-decoration: none;
+		opacity: 0.7;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+	}
+	
+	table,
+	th,
+	td {
+		border: 1px solid rgba(55, 53, 47, 0.09);
+		border-collapse: collapse;
+	}
+	
+	table {
+		border-left: none;
+		border-right: none;
+	}
+	
+	th,
+	td {
+		font-weight: normal;
+		padding: 0.25em 0.5em;
+		line-height: 1.5;
+		min-height: 1.5em;
+		text-align: left;
+	}
+	
+	th {
+		color: rgba(55, 53, 47, 0.6);
+	}
+	
+	ol,
+	ul {
+		margin: 0;
+		margin-block-start: 0.6em;
+		margin-block-end: 0.6em;
+	}
+	
+	li > ol:first-child,
+	li > ul:first-child {
+		margin-block-start: 0.6em;
+	}
+	
+	ul > li {
+		list-style: disc;
+	}
+	
+	ul.to-do-list {
+		padding-inline-start: 0;
+	}
+	
+	ul.to-do-list > li {
+		list-style: none;
+	}
+	
+	.to-do-children-checked {
+		text-decoration: line-through;
+		opacity: 0.375;
+	}
+	
+	ul.toggle > li {
+		list-style: none;
+	}
+	
+	ul {
+		padding-inline-start: 1.7em;
+	}
+	
+	ul > li {
+		padding-left: 0.1em;
+	}
+	
+	ol {
+		padding-inline-start: 1.6em;
+	}
+	
+	ol > li {
+		padding-left: 0.2em;
+	}
+	
+	.mono ol {
+		padding-inline-start: 2em;
+	}
+	
+	.mono ol > li {
+		text-indent: -0.4em;
+	}
+	
+	.toggle {
+		padding-inline-start: 0em;
+		list-style-type: none;
+	}
+	
+	/* Indent toggle children */
+	.toggle > li > details {
+		padding-left: 1.7em;
+	}
+	
+	.toggle > li > details > summary {
+		margin-left: -1.1em;
+	}
+	
+	.selected-value {
+		display: inline-block;
+		padding: 0 0.5em;
+		background: rgba(206, 205, 202, 0.5);
+		border-radius: 3px;
+		margin-right: 0.5em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+		white-space: nowrap;
+	}
+	
+	.collection-title {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	
+	.page-description {
+		margin-bottom: 2em;
+	}
+	
+	.simple-table {
+		margin-top: 1em;
+		font-size: 0.875rem;
+		empty-cells: show;
+	}
+	.simple-table td {
+		height: 29px;
+		min-width: 120px;
+	}
+	
+	.simple-table th {
+		height: 29px;
+		min-width: 120px;
+	}
+	
+	.simple-table-header-color {
+		background: rgb(247, 246, 243);
+		color: black;
+	}
+	.simple-table-header {
+		font-weight: 500;
+	}
+	
+	time {
+		opacity: 0.5;
+	}
+	
+	.icon {
+		display: inline-block;
+		max-width: 1.2em;
+		max-height: 1.2em;
+		text-decoration: none;
+		vertical-align: text-bottom;
+		margin-right: 0.5em;
+	}
+	
+	img.icon {
+		border-radius: 3px;
+	}
+	
+	.user-icon {
+		width: 1.5em;
+		height: 1.5em;
+		border-radius: 100%;
+		margin-right: 0.5rem;
+	}
+	
+	.user-icon-inner {
+		font-size: 0.8em;
+	}
+	
+	.text-icon {
+		border: 1px solid #000;
+		text-align: center;
+	}
+	
+	.page-cover-image {
+		display: block;
+		object-fit: cover;
+		width: 100%;
+		max-height: 30vh;
+	}
+	
+	.page-header-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.page-header-icon-with-cover {
+		margin-top: -0.72em;
+		margin-left: 0.07em;
+	}
+	
+	.page-header-icon img {
+		border-radius: 3px;
+	}
+	
+	.link-to-page {
+		margin: 1em 0;
+		padding: 0;
+		border: none;
+		font-weight: 500;
+	}
+	
+	p > .user {
+		opacity: 0.5;
+	}
+	
+	td > .user,
+	td > time {
+		white-space: nowrap;
+	}
+	
+	input[type="checkbox"] {
+		transform: scale(1.5);
+		margin-right: 0.6em;
+		vertical-align: middle;
+	}
+	
+	p {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+	
+	.image {
+		border: none;
+		margin: 1.5em 0;
+		padding: 0;
+		border-radius: 0;
+		text-align: center;
+	}
+	
+	.code,
+	code {
+		background: rgba(135, 131, 120, 0.15);
+		border-radius: 3px;
+		padding: 0.2em 0.4em;
+		border-radius: 3px;
+		font-size: 85%;
+		tab-size: 2;
+	}
+	
+	code {
+		color: #eb5757;
+	}
+	
+	.code {
+		padding: 1.5em 1em;
+	}
+	
+	.code-wrap {
+		white-space: pre-wrap;
+		word-break: break-all;
+	}
+	
+	.code > code {
+		background: none;
+		padding: 0;
+		font-size: 100%;
+		color: inherit;
+	}
+	
+	blockquote {
+		font-size: 1.25em;
+		margin: 1em 0;
+		padding-left: 1em;
+		border-left: 3px solid rgb(55, 53, 47);
+	}
+	
+	.bookmark {
+		text-decoration: none;
+		max-height: 8em;
+		padding: 0;
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
+	
+	.bookmark-title {
+		font-size: 0.85em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 1.75em;
+		white-space: nowrap;
+	}
+	
+	.bookmark-text {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.bookmark-info {
+		flex: 4 1 180px;
+		padding: 12px 14px 14px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	.bookmark-image {
+		width: 33%;
+		flex: 1 1 180px;
+		display: block;
+		position: relative;
+		object-fit: cover;
+		border-radius: 1px;
+	}
+	
+	.bookmark-description {
+		color: rgba(55, 53, 47, 0.6);
+		font-size: 0.75em;
+		overflow: hidden;
+		max-height: 4.5em;
+		word-break: break-word;
+	}
+	
+	.bookmark-href {
+		font-size: 0.75em;
+		margin-top: 0.25em;
+	}
+	
+	.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+	.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+	.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+	.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+	.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+	.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+	.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+	.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+	.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+	.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+	.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+	.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+	.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+	.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+	.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+	.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+	.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+	.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+	.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.highlight-default {
+		color: rgba(55, 53, 47, 1);
+	}
+	.highlight-gray {
+		color: rgba(120, 119, 116, 1);
+		fill: rgba(120, 119, 116, 1);
+	}
+	.highlight-brown {
+		color: rgba(159, 107, 83, 1);
+		fill: rgba(159, 107, 83, 1);
+	}
+	.highlight-orange {
+		color: rgba(217, 115, 13, 1);
+		fill: rgba(217, 115, 13, 1);
+	}
+	.highlight-yellow {
+		color: rgba(203, 145, 47, 1);
+		fill: rgba(203, 145, 47, 1);
+	}
+	.highlight-teal {
+		color: rgba(68, 131, 97, 1);
+		fill: rgba(68, 131, 97, 1);
+	}
+	.highlight-blue {
+		color: rgba(51, 126, 169, 1);
+		fill: rgba(51, 126, 169, 1);
+	}
+	.highlight-purple {
+		color: rgba(144, 101, 176, 1);
+		fill: rgba(144, 101, 176, 1);
+	}
+	.highlight-pink {
+		color: rgba(193, 76, 138, 1);
+		fill: rgba(193, 76, 138, 1);
+	}
+	.highlight-red {
+		color: rgba(212, 76, 71, 1);
+		fill: rgba(212, 76, 71, 1);
+	}
+	.highlight-gray_background {
+		background: rgba(241, 241, 239, 1);
+	}
+	.highlight-brown_background {
+		background: rgba(244, 238, 238, 1);
+	}
+	.highlight-orange_background {
+		background: rgba(251, 236, 221, 1);
+	}
+	.highlight-yellow_background {
+		background: rgba(251, 243, 219, 1);
+	}
+	.highlight-teal_background {
+		background: rgba(237, 243, 236, 1);
+	}
+	.highlight-blue_background {
+		background: rgba(231, 243, 248, 1);
+	}
+	.highlight-purple_background {
+		background: rgba(244, 240, 247, 0.8);
+	}
+	.highlight-pink_background {
+		background: rgba(249, 238, 243, 0.8);
+	}
+	.highlight-red_background {
+		background: rgba(253, 235, 236, 1);
+	}
+	.block-color-default {
+		color: inherit;
+		fill: inherit;
+	}
+	.block-color-gray {
+		color: rgba(120, 119, 116, 1);
+		fill: rgba(120, 119, 116, 1);
+	}
+	.block-color-brown {
+		color: rgba(159, 107, 83, 1);
+		fill: rgba(159, 107, 83, 1);
+	}
+	.block-color-orange {
+		color: rgba(217, 115, 13, 1);
+		fill: rgba(217, 115, 13, 1);
+	}
+	.block-color-yellow {
+		color: rgba(203, 145, 47, 1);
+		fill: rgba(203, 145, 47, 1);
+	}
+	.block-color-teal {
+		color: rgba(68, 131, 97, 1);
+		fill: rgba(68, 131, 97, 1);
+	}
+	.block-color-blue {
+		color: rgba(51, 126, 169, 1);
+		fill: rgba(51, 126, 169, 1);
+	}
+	.block-color-purple {
+		color: rgba(144, 101, 176, 1);
+		fill: rgba(144, 101, 176, 1);
+	}
+	.block-color-pink {
+		color: rgba(193, 76, 138, 1);
+		fill: rgba(193, 76, 138, 1);
+	}
+	.block-color-red {
+		color: rgba(212, 76, 71, 1);
+		fill: rgba(212, 76, 71, 1);
+	}
+	.block-color-gray_background {
+		background: rgba(241, 241, 239, 1);
+	}
+	.block-color-brown_background {
+		background: rgba(244, 238, 238, 1);
+	}
+	.block-color-orange_background {
+		background: rgba(251, 236, 221, 1);
+	}
+	.block-color-yellow_background {
+		background: rgba(251, 243, 219, 1);
+	}
+	.block-color-teal_background {
+		background: rgba(237, 243, 236, 1);
+	}
+	.block-color-blue_background {
+		background: rgba(231, 243, 248, 1);
+	}
+	.block-color-purple_background {
+		background: rgba(244, 240, 247, 0.8);
+	}
+	.block-color-pink_background {
+		background: rgba(249, 238, 243, 0.8);
+	}
+	.block-color-red_background {
+		background: rgba(253, 235, 236, 1);
+	}
+	.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+	.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+	.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+	.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+	.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+	.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+	.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+	.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+	.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+	.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+	.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+	.select-value-color-pageGlass { background-color: undefined; }
+	.select-value-color-washGlass { background-color: undefined; }
+	
+	.checkbox {
+		display: inline-flex;
+		vertical-align: text-bottom;
+		width: 16;
+		height: 16;
+		background-size: 16px;
+		margin-left: 2px;
+		margin-right: 5px;
+	}
+	
+	.checkbox-on {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+	}
+	
+	.checkbox-off {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+	}
+		
+	</style></head><body><article id="ccc260f5-9849-4c6e-81db-29438de3008c" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Burk%20Rose%20ccc260f598494c6e81db29438de3008c/burk-modified%201.png"/></div><h1 class="page-title">Burk Rose</h1><p class="page-description"></p></header><div class="page-body"><div id="baff59c0-1be9-47bd-9b7d-525f4889228d" class="column-list"><div id="12f0309f-ee1e-4a06-9f7c-eb48ac5066cc" style="width:87.5%" class="column"><p id="a67b2744-2b32-4387-a252-c48cfc18e019" class="">Computational linguist with 9 years of professional experience in the field of natural language understanding and engineering, with an emphasis on grammar development.</p></div><div id="76eb0041-7e8f-49f4-8b24-f98d09fcf7e2" style="width:12.499999999999996%" class="column"><p id="12de3a7f-61b1-4035-bfe9-f205ba96c7d0" class="">
+	</p></div></div><p id="bcff19e7-7427-4966-b26b-127577462724" class="">
+	</p><h2 id="64d968dd-d1e3-4d18-a410-33ab7075e9ee" class="">Contact</h2><div id="89d81d2d-43db-4ab3-ad62-81f69d365ea2" class="column-list"><div id="39f88f14-dd00-4e44-a199-b314a2a5f39e" style="width:37.5%" class="column"><p id="34ff9e59-fd72-4559-a283-3e9062eb0bb9" class="">+49 313320032</p><p id="9fac4a8d-9f17-4103-ba31-b815f5bbf0f6" class="">email@mail.co</p></div><div id="4227970a-0d5b-4a85-8670-4b0784639b94" style="width:62.5%" class="column"><p id="2086790b-2669-4984-8edf-779e3c9e6b7b" class="">Hamburg, Germany</p><p id="0696171d-e9e1-4c21-9506-9813b2e9e473" class="">www.byburk.net</p></div></div><p id="f65aa073-9ea5-41da-8687-106ce6b812ea" class="">
+	</p><hr id="50317e8d-e1f1-41fe-9a40-ef03811087b9"/><p id="5d3e6712-8871-40ab-9c05-3734b6d3d0a4" class="">
+	</p><h2 id="4acdb334-e465-444e-b44b-38c477d3326d" class="">Professional experience</h2><div id="4b416b20-4241-4fbb-a302-4efc16047713" class="column-list"><div id="bb5bdd08-9c28-4a94-bbef-3a985427a93f" style="width:62.5%" class="column"><p id="8e12b214-8c88-46af-9f7a-3ff46b5ca2a9" class="">2014 – 2022 </p></div><div id="4f094d0c-3952-4c4c-b472-54b32e7df02a" style="width:106.25%" class="column"><p id="c7165515-4627-4dc4-b391-c9b9663366c9" class=""><strong>Language Lead</strong></p><p id="08d66ce7-6caa-44b7-a458-51c24315c4bc" class=""><em>Company</em></p><p id="af37fad8-e617-452e-8726-2fc56c4028c0" class="">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p></div></div><div id="5f7f5339-0287-4257-928a-63b68fb7cfb7" class="column-list"><div id="a7d18607-62fa-4303-978a-1e912f8cc003" style="width:37.5%" class="column"><p id="937faa73-68d0-4256-bae7-c8b6c0f723e9" class="">2014 – 2022</p></div><div id="1f30eecc-0e5e-4d8e-a21a-9d4ab82eb063" style="width:62.5%" class="column"><p id="bff4d36f-aa57-485f-b7e4-cccc1e2c7a97" class=""><strong>Associate Linguist</strong></p><p id="b1e0c735-c2d4-46a6-a012-2e18ca4b51d9" class=""><em>Company</em></p><p id="144726ad-e51f-4a03-9ec5-3d5d40069c04" class="">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p><p id="7a41435b-c950-4f47-b19f-ccf16c46c9c0" class="">
+	</p></div></div><div id="39727daf-d608-43d9-8414-447646ad904f" class="column-list"><div id="32098d7a-a906-4e8b-9883-08d7cc4fc219" style="width:37.5%" class="column"><p id="a5c6865f-bac0-41c5-ab65-345271c6631c" class="">2013 – 2014  </p></div><div id="2ac3623c-3f15-44a9-bcf3-2373a60c1e5b" style="width:62.5%" class="column"><p id="a7303500-fcba-4618-ba9a-f8062e268cf2" class=""><strong>Natural Language Engineer</strong></p><p id="b132f5ed-bb7e-4dd0-b080-f3ce740f250c" class=""><em>Company</em></p><p id="3ea247ff-99dd-49ac-87e5-c909a5bbdf7e" class="">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p></div></div><p id="b47e57d0-9844-4da2-ae08-73bbfe193584" class="">
+	</p><hr id="97df98e2-9621-41f6-b375-93d88be43319"/><p id="87defe85-85df-4f6d-9fac-f562f1ad8764" class="">
+	</p><h2 id="45501548-417e-471e-9586-1e549b8f36ff" class="">Education</h2><div id="0c834d31-fdcd-4b86-899b-c31a5bdd929a" class="column-list"><div id="0a212624-a2f7-4fe6-8171-34c5ec3c7804" style="width:62.5%" class="column"><p id="3ebb2671-2b72-4baa-a43f-8e38f16f3060" class="">2008 – 2012 </p></div><div id="9f5fdb22-9df1-4be9-8c1b-848fe486ba5d" style="width:112.5%" class="column"><p id="b4878a1f-21f9-4b7e-9021-71ed12e92fea" class=""><strong>University of Constance</strong></p><p id="deb96e35-af49-4b97-b3a6-d9807f7990c8" class="">Bachelor of Arts in Linguistics</p><p id="07e8a514-bf8e-479c-8d41-75fce77094a0" class="">Graduated 2012</p></div></div><p id="838eecc9-3435-4d88-b3f4-df3f1100f7c9" class="">
+	</p><div id="12f79463-2ba4-4cea-b8f0-eb4703a1dfee" class="column-list"><div id="841691ed-5348-4249-92de-38ddcb1768a5" style="width:62.5%" class="column"><p id="5b4c1268-33d6-4a84-af9a-520b89c2d2b7" class="">1997 – 2008 </p></div><div id="37a7f613-f8dd-41f0-aa2e-d45306a86ad3" style="width:112.50000000000003%" class="column"><p id="bbdc1494-822a-49f5-bef3-d324e096b8bd" class=""><strong>College of Fun</strong></p><p id="f9acf7ac-54da-4a3b-9135-f46a57f151b1" class="">Bachelor of Arts in Smiling</p><p id="09ce54c5-46c0-4645-9308-3fe242498d0d" class="">Graduated 2008</p></div></div><p id="8fb43ff0-c00f-4e20-9914-4766e0b9668b" class="">
+	</p><hr id="9f96daf9-c6e7-4b81-abaf-f8ddd4f7d214"/><p id="f92c3a0f-1cdb-4efb-98c6-bb04138bc742" class="">
+	</p><h2 id="eeb89b69-1b58-4a1a-b32d-666f01eae27c" class="">Expertise</h2><div id="cd2d46a2-02f6-490f-a78d-d67b148860fa" class="collection-content"><h4 class="collection-title">Expertise</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesNumber"><path d="M2.4834 10.9902H4.33594L3.75488 13.8887C3.74121 13.9639 3.72754 14.0664 3.72754 14.1416C3.72754 14.5381 3.99414 14.7637 4.39746 14.7637C4.81445 14.7637 5.09473 14.5449 5.18359 14.1143L5.80566 10.9902H8.79297L8.21191 13.8887C8.19824 13.9639 8.18457 14.0664 8.18457 14.1416C8.18457 14.5381 8.45117 14.7637 8.85449 14.7637C9.27148 14.7637 9.55176 14.5449 9.63379 14.1143L10.2627 10.9902H12.4502C12.9287 10.9902 13.2432 10.6758 13.2432 10.2109C13.2432 9.8418 12.9902 9.56836 12.6006 9.56836H10.5498L11.2129 6.28711H13.3662C13.8379 6.28711 14.1523 5.96582 14.1523 5.50098C14.1523 5.13184 13.9062 4.8584 13.5098 4.8584H11.5L12.0195 2.27441C12.0264 2.21973 12.0469 2.11035 12.0469 2.01465C12.0469 1.625 11.7666 1.39258 11.3633 1.39258C10.9053 1.39258 10.6797 1.63867 10.5977 2.05566L10.0303 4.8584H7.04297L7.5625 2.27441C7.57617 2.21973 7.58984 2.11035 7.58984 2.01465C7.58984 1.625 7.30957 1.39258 6.91309 1.39258C6.44824 1.39258 6.21582 1.63867 6.13379 2.05566L5.57324 4.8584H3.54297C3.06445 4.8584 2.75 5.18652 2.75 5.65137C2.75 6.03418 3.00293 6.28711 3.39258 6.28711H5.28613L4.62305 9.56836H2.63379C2.15527 9.56836 1.84082 9.89648 1.84082 10.3613C1.84082 10.7373 2.09375 10.9902 2.4834 10.9902ZM6.09277 9.56836L6.75586 6.28711H9.74316L9.08008 9.56836H6.09277Z"></path></svg></span>Percent</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/kind_gray.svg" style="width:14px;height:14px"/></span>Skill</th></tr></thead><tbody><tr id="29288731-f9ff-4dc3-8afb-3a01132a805d"><td class="cell-title"><a href="https://www.notion.so/English-29288731f9ff4dc38afb3a01132a805d?pvs=21">English</a></td><td class="cell-w^s|">90%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Language</span></td></tr><tr id="ff5d65d8-b977-4d79-9f19-0341b1995918"><td class="cell-title"><a href="https://www.notion.so/French-ff5d65d8b9774d799f190341b1995918?pvs=21">French</a></td><td class="cell-w^s|">50%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Language</span></td></tr><tr id="9e9eb507-2be8-4337-804e-c34a25585b8e"><td class="cell-title"><a href="https://www.notion.so/German-9e9eb5072be84337804ec34a25585b8e?pvs=21">German</a></td><td class="cell-w^s|">100%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Language</span></td></tr><tr id="26464933-6d02-410a-a56e-f31d629cf0fc"><td class="cell-title"><a href="https://www.notion.so/Latin-264649336d02410aa56ef31d629cf0fc?pvs=21">Latin</a></td><td class="cell-w^s|">60%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Language</span></td></tr><tr id="175c85fc-9f82-4eac-ae51-8c1ec0a62f6a"><td class="cell-title"><a href="https://www.notion.so/Syntax-175c85fc9f824eacae518c1ec0a62f6a?pvs=21">Syntax</a></td><td class="cell-w^s|">90%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Language</span></td></tr><tr id="2e7c5229-7b1a-4383-af24-ffed625ea354"><td class="cell-title"><a href="https://www.notion.so/Communication-2e7c52297b1a4383af24ffed625ea354?pvs=21">Communication</a></td><td class="cell-w^s|">90%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Personal</span></td></tr><tr id="bd8e4d60-80ea-4d9a-a204-03b0ea0d8efa"><td class="cell-title"><a href="https://www.notion.so/Project-Management-bd8e4d6080ea4d9aa20403b0ea0d8efa?pvs=21">Project Management</a></td><td class="cell-w^s|">75%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Personal</span></td></tr><tr id="2705cea6-5621-41ef-ac7b-ab8b24e8260a"><td class="cell-title"><a href="https://www.notion.so/HTML-CSS-2705cea6562141efac7bab8b24e8260a?pvs=21">HTML &amp; CSS</a></td><td class="cell-w^s|">90%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Technical</span></td></tr><tr id="da405295-347a-4b13-ae0c-3e5e4b8a906e"><td class="cell-title"><a href="https://www.notion.so/JavaScript-da405295347a4b13ae0c3e5e4b8a906e?pvs=21">JavaScript</a></td><td class="cell-w^s|">70%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Technical</span></td></tr><tr id="502660d2-94be-4aa8-9f45-a212dcb9aa11"><td class="cell-title"><a href="https://www.notion.so/Machine-Translation-502660d294be4aa89f45a212dcb9aa11?pvs=21">Machine Translation</a></td><td class="cell-w^s|">75%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Technical</span></td></tr><tr id="e2be83ab-f054-404f-8561-090cc4c4eb75"><td class="cell-title"><a href="https://www.notion.so/Microsoft-Office-e2be83abf054404f8561090cc4c4eb75?pvs=21">Microsoft Office</a></td><td class="cell-w^s|">90%</td><td class="cell-;x|A"><span class="selected-value select-value-color-blue">Technical</span></td></tr></tbody></table><br/><br/></div><p id="89e472e8-9af8-40b7-8bc3-0c9833e6313f" class="">
+	</p><p id="6b951451-d4cb-48f2-bf6e-06dd02400f12" class="">
+	</p><hr id="37d347ae-f75a-4212-8770-bc99ec7f4433"/><p id="44f0010b-bea2-4a2c-ac52-56fde02ed457" class="">
+	</p><h2 id="bc3775a6-9bf6-4c81-9400-405ecb0357fe" class="">Side projects </h2><div id="9438e47c-0516-42bf-b9f7-da795205f804" class="collection-content"><h4 class="collection-title">Side projects</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Active</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/link_gray.svg" style="width:14px;height:14px"/></span>Link</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/clock_gray.svg" style="width:14px;height:14px"/></span>Timeframe</th></tr></thead><tbody><tr id="84d92d92-59ff-4259-b18c-374102e09a54"><td class="cell-title"><a href="https://www.notion.so/Medium-Stories-84d92d9259ff4259b18c374102e09a54?pvs=21"><img class="icon" src="https://www.notion.so/icons/checkmark_gray.svg"/>Medium Stories</a></td><td class="cell-DH;V"><div class="checkbox checkbox-on"></div></td><td class="cell-A:PV"><a href="https://stories.byburk.net" class="url-value">https://stories.byburk.net</a></td><td class="cell-Tf|z">2021 – today</td></tr><tr id="7583f052-63c7-4802-853b-45731aa3059a"><td class="cell-title"><a href="https://www.notion.so/SoloCreator-7583f05263c74802853b45731aa3059a?pvs=21"><img class="icon" src="https://www.notion.so/icons/checkmark_gray.svg"/>SoloCreator</a></td><td class="cell-DH;V"><div class="checkbox checkbox-on"></div></td><td class="cell-A:PV"><a href="https://byburk.net" class="url-value">https://byburk.net</a></td><td class="cell-Tf|z">2022 - today</td></tr><tr id="4e7cc3c9-96b1-40ff-ae50-c429699e6959"><td class="cell-title"><a href="https://www.notion.so/Digital-Products-4e7cc3c996b140ffae50c429699e6959?pvs=21"><img class="icon" src="https://www.notion.so/icons/checkmark_gray.svg"/>Digital Products</a></td><td class="cell-DH;V"><div class="checkbox checkbox-on"></div></td><td class="cell-A:PV"><a href="https://shop.byburk.net" class="url-value">https://shop.byburk.net</a></td><td class="cell-Tf|z">2020 - today</td></tr></tbody></table><br/><br/></div><p id="bf843127-5f57-4851-bf4a-f03e16463c26" class="">
+	</p><p id="dcf3d81d-8fdd-49e0-85f6-45fb1c9e79dc" class="">
+	</p><p id="fc89f56c-0951-443a-bad6-50de2e015c32" class="">
+	</p><p id="fcc478c4-264e-4a19-96ed-3e0a95aba939" class="">
+	</p><hr id="bdc9b6b5-fe7c-4048-8d4c-d894c5d97052"/><p id="8785583f-c572-4f95-94fe-24deece8b2a7" class="">
+	</p><p id="109ef7c3-79f4-4e70-8c22-8ffb9eeeb0da" class="">
+	</p><div id="4d2c3761-5a06-460f-91be-c85fc753fb09" class="column-list"><div id="6e6fe094-50d9-4595-9334-bafb0415c570" style="width:18.75%" class="column"><p id="9cfebe69-6b0e-46bf-8148-58f246a0da15" class="">
+	</p><figure id="b40213a5-23a9-4689-ba35-1020aa6fcccd" class="image"><a href="Burk%20Rose%20ccc260f598494c6e81db29438de3008c/burk-modified.png"><img style="width:108px" src="Burk%20Rose%20ccc260f598494c6e81db29438de3008c/burk-modified.png"/></a></figure></div><div id="1d6f279f-0308-40ec-9405-e06764c7553d" style="width:81.25%" class="column"><h3 id="769afa5b-ba64-4e6c-9691-92321b4c9663" class=""><strong>Hi, I’m </strong><strong><a href="https://byburk.net">Burk</a></strong>. </h3><p id="e67b30ec-8f50-496f-8c87-7447ad6b77e8" class=""><mark class="highlight-gray">Thank you for downloading my Notion template. Find more on </mark><strong><a href="http://burk.gumroad.com"><mark class="highlight-gray">Gumroad</mark></a></strong><strong><mark class="highlight-gray">! <br/><br/></mark></strong><a href="https://byburk.net"><strong><mark class="highlight-gray">Get notified</mark></strong></a><a href="https://www.getrevue.co/profile/Burk"><mark class="highlight-gray"> </mark></a><mark class="highlight-gray">whenever I release new templates.<br/>If you enjoy this template and want more, you can <br/></mark><strong><mark class="highlight-gray"><a href="https://ko-fi.com/byburk">buy me a black coffee here</a></mark></strong><mark class="highlight-gray">. Follow me on Twitter</mark><strong><mark class="highlight-gray"> </mark></strong><strong><a href="https://twitter.com/burkr_"><mark class="highlight-gray">here</mark></a></strong><mark class="highlight-gray">.<br/><br/></mark><a href="https://burkrosemann.medium.com/subscribe"><strong><mark class="highlight-gray">Follow my Medium journey</mark></strong></a><mark class="highlight-gray">!</mark><strong><mark class="highlight-gray"> </mark></strong><strong><mark class="highlight-gray"><a href="https://burkrosemann.medium.com/membership">Become a Medium member</a></mark></strong><mark class="highlight-gray"> (</mark><mark class="highlight-gray"><em>referral link</em></mark><mark class="highlight-gray">).</mark></p><p id="0714ffe7-c800-434d-9af4-4d618ce959ab" class="block-color-gray">Got questions? → <a href="mailto:byburk@icloud.com"><strong>byburk@icloud.com</strong></a></p></div></div><p id="5320b1d6-01fe-4b61-8898-a2a587c50258" class="">
+	</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
